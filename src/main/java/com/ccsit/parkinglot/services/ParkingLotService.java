@@ -1,8 +1,6 @@
 package com.ccsit.parkinglot.services;
 
-import com.ccsit.parkinglot.models.ParkingFloor;
-import com.ccsit.parkinglot.models.ParkingLot;
-import com.ccsit.parkinglot.models.ParkingSpot;
+import com.ccsit.parkinglot.models.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,6 +8,7 @@ import java.util.*;
 @Service
 public class ParkingLotService {
     private ParkingLot parkingLot;
+
     public void createParkingLot(String hyd, int i) {
 
 
@@ -35,6 +34,11 @@ public class ParkingLotService {
             parkingFloorList.add(floor);
         }
         parkingLot.setParkingFloors(parkingFloorList);
+
+        Gate entryGate = new EntryGate("Entry Gate", GateType.ENTRY_GATE, null);
+        Gate exitGate = new ExitGate("Exit-1", GateType.EXIT_GATE, null);
+        parkingLot.setEntryGates(Arrays.asList(entryGate));
+        parkingLot.setExitGates(Arrays.asList(exitGate));
         this.parkingLot = parkingLot;
         return this.parkingLot;
     }

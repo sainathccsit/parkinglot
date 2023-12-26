@@ -7,4 +7,9 @@ public class Gate {
     private GateType gateType;
     private Operator operator;
 
+    public Gate(String name, GateType gateType, Operator operator) {
+        this.name = name;
+        this.gateType = gateType;
+        this.operator = operator;
+    }
 }
