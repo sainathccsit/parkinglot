@@ -13,21 +13,22 @@ import java.util.List;
 @RequestMapping("/app/v1/parklot")
 public class ParkingLotController {
     private ParkingLotService parkingLotService;
+
     public ParkingLotController(ParkingLotService parkingLotService) {
-        this.parkingLotService=parkingLotService;
+        this.parkingLotService = parkingLotService;
     }
 
     @PostMapping("")
-    public String createParkingLot(@RequestBody ParkingLotReqdto request){
-       ParkingLot lot = parkingLotService.createParkingLot(request.getName(), request.getFloors(),request.getSpotsPerFloor());
+    public String createParkingLot(@RequestBody ParkingLotReqdto request) {
+        ParkingLot lot = parkingLotService.createParkingLot(request.getName(), request.getFloors(), request.getSpotsPerFloor());
         return lot.getName();
     }
 
     @GetMapping("")
-    public List<ParkingLot> getAllParkingLots(){
+    public List<ParkingLot> getAllParkingLots() {
         List<ParkingLot> parkingLots = new ArrayList<>();
-     ParkingLot lot = parkingLotService.getAllParkingLots();
-     parkingLots.add(lot);
+        ParkingLot lot = parkingLotService.getAllParkingLots();
+        parkingLots.add(lot);
         return parkingLots;
     }
 }
