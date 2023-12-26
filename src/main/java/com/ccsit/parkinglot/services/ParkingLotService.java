@@ -7,12 +7,9 @@ import java.util.*;
 
 @Service
 public class ParkingLotService {
-    private ParkingLot parkingLot;
-
-    public void createParkingLot(String hyd, int i) {
+    private List<ParkingLot> parkingLotList = new ArrayList<>();
 
 
-    }
 
     public ParkingLot createParkingLot(String name, int floors, int spotsPerFloor) {
         ParkingLot parkingLot = new ParkingLot();
@@ -39,13 +36,14 @@ public class ParkingLotService {
         Gate exitGate = new ExitGate("Exit-1", GateType.EXIT_GATE, null);
         parkingLot.setEntryGates(Arrays.asList(entryGate));
         parkingLot.setExitGates(Arrays.asList(exitGate));
-        this.parkingLot = parkingLot;
-        return this.parkingLot;
+
+        this.parkingLotList.add(parkingLot);
+        return this.parkingLotList.get(parkingLotList.size()-1);
     }
 
 
-    public ParkingLot getAllParkingLots() {
+    public List<ParkingLot> getAllParkingLots() {
 
-        return this.parkingLot;
+        return this.parkingLotList;
     }
 }

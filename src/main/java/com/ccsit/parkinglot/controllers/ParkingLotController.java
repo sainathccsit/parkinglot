@@ -27,8 +27,7 @@ public class ParkingLotController {
     @GetMapping("")
     public List<ParkingLot> getAllParkingLots() {
         List<ParkingLot> parkingLots = new ArrayList<>();
-        ParkingLot lot = parkingLotService.getAllParkingLots();
-        parkingLots.add(lot);
+        parkingLots = parkingLotService.getAllParkingLots();
         return parkingLots;
     }
 }

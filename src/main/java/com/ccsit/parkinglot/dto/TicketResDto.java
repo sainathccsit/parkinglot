@@ -1,15 +1,17 @@
-package com.ccsit.parkinglot.models;
+package com.ccsit.parkinglot.dto;
+
+import com.ccsit.parkinglot.models.*;
 
 import java.util.Date;
 
-public class Ticket {
+public class TicketResDto {
     int ticketId;
     Date entryTime;
     Date exitTime;
     Vehicle vehicle;
     Operator operator;
     Gate entryGate;
-    ParkingLot parkingLot;
+    String parkingLotName;
     ParkingSpot parkingSpot;
 
     public int getTicketId() {
@@ -60,12 +62,12 @@ public class Ticket {
         this.entryGate = entryGate;
     }
 
-    public ParkingLot getParkingLot() {
-        return parkingLot;
+    public String getParkingLotName() {
+        return parkingLotName;
     }
 
-    public void setParkingLot(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public void setParkingLotName(String parkingLotName) {
+        this.parkingLotName = parkingLotName;
     }
 
     public ParkingSpot getParkingSpot() {
