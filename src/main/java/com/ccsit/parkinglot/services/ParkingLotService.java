@@ -1,10 +1,7 @@
 package com.ccsit.parkinglot.services;
 
 
-import com.ccsit.parkinglot.models.ParkingFloor;
-import com.ccsit.parkinglot.models.ParkingLot;
-import com.ccsit.parkinglot.models.ParkingSpot;
-import com.ccsit.parkinglot.models.ParkingSpotType;
+import com.ccsit.parkinglot.models.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,8 +9,15 @@ import java.util.List;
 
 
 public class ParkingLotService {
-    private  List<ParkingLot> parkingLotList = new ArrayList<>();
+    private  static List<ParkingLot> parkingLotList = new ArrayList<>();
     private  int lotId = 0;
+
+    public ParkingLot getParkingLotByName(String parkingLotname) {
+        for(ParkingLot lot : parkingLotList){
+            if(lot.getName().equalsIgnoreCase(parkingLotname)) return lot;
+        }
+        return null;
+    }
 
 
     public ParkingLot create(String name, int floors, int spotsPerFloor) {
@@ -35,7 +39,8 @@ public class ParkingLotService {
                     spot.setSpotType(ParkingSpotType.BIKE);
 
                 spot.setParkingFloorId(parkingLot.getName());
-                spot.setSpotId(floor.getFloorNumber()+"-"+k+" spot");
+                spot.setSpotId(floor.getFloorNumber()+"-spot-"+k);
+                spot.setParkingSpotStatus(ParkingSpotStatusType.AVAILABLE);
                 spotList.add(spot);
             }
             floor.setParkingSpots(spotList);
