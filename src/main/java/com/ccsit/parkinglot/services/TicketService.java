@@ -50,4 +50,12 @@ public class TicketService {
 
         return ticketList;
     }
+
+    public Ticket getTicketById(int id){
+        for(Ticket ticket : ticketList){
+            if(ticket.getTicketId() == id) return ticket;
+        }
+
+        return null;
+    }
 }

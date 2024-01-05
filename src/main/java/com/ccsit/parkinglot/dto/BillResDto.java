@@ -1,18 +1,17 @@
-package com.ccsit.parkinglot.models;
+package com.ccsit.parkinglot.dto;
 
-import lombok.Data;
+import com.ccsit.parkinglot.models.*;
 
 import java.util.Date;
 import java.util.List;
 
-public class Bill {
+public class BillResDto {
     private int billId;
 
-    private Ticket ticket;
-    private Operator operator;
-    Gate exitGate;
+    private int ticketId;
+    Date entryTime;
     Date exitTime;
-    List<Payment> payments;
+    int duration;
     Double billAmount;
     BillStatusType billstatus;
 
@@ -24,28 +23,20 @@ public class Bill {
         this.billId = billId;
     }
 
-    public Ticket getTicket() {
-        return ticket;
+    public int getTicketId() {
+        return ticketId;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
     }
 
-    public Operator getOperator() {
-        return operator;
+    public Date getEntryTime() {
+        return entryTime;
     }
 
-    public void setOperator(Operator operator) {
-        this.operator = operator;
-    }
-
-    public Gate getExitGate() {
-        return exitGate;
-    }
-
-    public void setExitGate(Gate exitGate) {
-        this.exitGate = exitGate;
+    public void setEntryTime(Date entryTime) {
+        this.entryTime = entryTime;
     }
 
     public Date getExitTime() {
@@ -56,12 +47,12 @@ public class Bill {
         this.exitTime = exitTime;
     }
 
-    public List<Payment> getPayments() {
-        return payments;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public Double getBillAmount() {
